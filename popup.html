@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TabGuardian</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="header">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 64 64">
+          <circle class="ring-track" cx="32" cy="32" r="28" />
+          <circle class="ring-progress" id="ringProgress" cx="32" cy="32" r="28" />
+        </svg>
+        <div class="ring-label">
+          <span class="ring-value" id="ringValue">--</span>
+          <span class="ring-unit">GB</span>
+        </div>
+      </div>
+
+      <div class="header-text">
+        <h1 class="title">TabGuardian</h1>
+        <p class="subtitle" id="subtitle">Loading tabs…</p>
+      </div>
+
+      <button class="icon-btn" id="refreshBtn" title="Refresh" aria-label="Refresh">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5V6h-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="filter-row">
+      <div class="chip-group">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="heavy">Heavy</button>
+        <button class="chip" data-filter="suspended">Suspended</button>
+      </div>
+      <button class="suspend-all-btn" id="suspendAllBtn">Suspend inactive</button>
+    </div>
+
+    <main class="tab-list" id="tabList"></main>
+
+    <div class="empty-state" id="emptyState" hidden>
+      <p>No tabs match this filter.</p>
+    </div>
+
+    <footer class="footer">
+      <label class="footer-toggle">
+        <span>Auto-suspend after</span>
+        <select id="autoSuspendSelect">
+          <option value="0">Off</option>
+          <option value="15">15 min</option>
+          <option value="30" selected>30 min</option>
+          <option value="60">1 hour</option>
+        </select>
+      </label>
+      <span class="version">v0.3.0</span>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
